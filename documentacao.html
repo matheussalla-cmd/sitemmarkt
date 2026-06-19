@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentação — TheusMarkt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sales.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body class="docs-body">
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo_TheusMarkt.png" alt="TheusMarkt" class="nav-logo-img">
+    </a>
+    <div class="nav-links">
+      <a href="index.html#sistema">O Sistema</a>
+      <a href="index.html#preco">Preço</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="documentacao.html" class="active-link">Documentação</a>
+    </div>
+    <a href="pagamento.html" class="btn-gold-nav">Comprar →</a>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  </div>
+  <div class="nav-mobile hidden" id="navMobile">
+    <a href="index.html#sistema">O Sistema</a>
+    <a href="index.html#preco">Preço</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="documentacao.html">Documentação</a>
+    <a href="pagamento.html" class="btn-gold-mobile">Comprar →</a>
+  </div>
+</nav>
+
+<div class="docs-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="docs-sidebar">
+    <div class="docs-sidebar-inner">
+      <div class="docs-sidebar-label">Documentação</div>
+      <nav class="docs-nav">
+        <a href="#introducao" class="docs-nav-link">Introdução</a>
+        <a href="#requisitos" class="docs-nav-link">Requisitos</a>
+        <a href="#instalacao" class="docs-nav-link">Instalação e Hospedagem</a>
+        <div class="docs-nav-group">Plataformas de Anúncio</div>
+        <a href="#meta" class="docs-nav-link">📘 Meta Ads</a>
+        <a href="#google" class="docs-nav-link">🔴 Google Ads</a>
+        <a href="#tiktok" class="docs-nav-link">🎵 TikTok Ads</a>
+        <a href="#linkedin" class="docs-nav-link">🔵 LinkedIn Ads</a>
+        <div class="docs-nav-group">Outros</div>
+        <a href="#ia" class="docs-nav-link">🤖 IA (Anthropic)</a>
+        <a href="#problemas" class="docs-nav-link">Problemas comuns</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="docs-content">
+
+    <section id="introducao" class="docs-section">
+      <h1>Documentação do TheusMarkt</h1>
+      <p class="docs-lead">Este guia mostra, passo a passo, como configurar cada plataforma de anúncios dentro do sistema. Não é necessário nenhum conhecimento de programação — apenas seguir as instruções de cada plataforma.</p>
+      <div class="docs-callout docs-callout-info">
+        <strong>💡 Onde inserir os dados</strong>
+        <p>Dentro do TheusMarkt, vá em <strong>Contas &amp; Tokens → + Adicionar Conta</strong>. Escolha a plataforma, cole o Token de Acesso e o ID da Conta gerados conforme as instruções abaixo.</p>
+      </div>
+    </section>
+
+    <section id="requisitos" class="docs-section">
+      <h2>Requisitos antes de começar</h2>
+      <ul class="docs-list">
+        <li>Uma conta de anúncios ativa em pelo menos uma das plataformas (Meta, Google, TikTok ou LinkedIn)</li>
+        <li>Acesso de administrador (ou permissão equivalente) na conta de anúncios que você quer conectar</li>
+        <li>Um local para hospedar os arquivos do sistema (recomendamos o <a href="https://www.netlify.com" target="_blank">Netlify</a>, que tem plano gratuito)</li>
+      </ul>
+    </section>
+
+    <section id="instalacao" class="docs-section">
+      <h2>Instalação e hospedagem</h2>
+      <p>O TheusMarkt é um sistema estático (HTML, CSS e JavaScript) — não precisa de servidor backend nem banco de dados para funcionar.</p>
+      <ol class="docs-steps">
+        <li><strong>Baixe o arquivo .zip</strong> recebido após a compra e descompacte em uma pasta no seu computador.</li>
+        <li><strong>Crie uma conta gratuita</strong> em um serviço de hospedagem de sites estáticos, como o <a href="https://www.netlify.com" target="_blank">Netlify</a>.</li>
+        <li><strong>Arraste a pasta</strong> com os arquivos do sistema para a área de deploy do Netlify (ou conecte via GitHub, se preferir).</li>
+        <li><strong>Acesse a URL gerada</strong> — seu sistema já estará no ar e pronto para configurar os tokens.</li>
+      </ol>
+      <div class="docs-callout docs-callout-warn">
+        <strong>⚠️ Importante</strong>
+        <p>A senha de acesso padrão do sistema está definida no arquivo <code>app.js</code>. Recomendamos alterá-la antes de divulgar o link para qualquer pessoa.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════ META ADS ══════════════ -->
+    <section id="meta" class="docs-section">
+      <div class="docs-plat-header">
+        <span class="docs-plat-icon meta-bg">📘</span>
+        <h2>Meta Ads (Facebook e Instagram)</h2>
+      </div>
+      <p>A integração usa a Graph API do Meta. Você vai precisar de um <strong>Token de Acesso</strong> e do <strong>ID da Conta de Anúncios</strong>.</p>
+
+      <h3>Passo 1 — Criar um App no Meta for Developers</h3>
+      <ol class="docs-steps">
+        <li>Acesse <a href="https://developers.facebook.com" target="_blank">developers.facebook.com</a> e faça login com sua conta do Facebook</li>
+        <li>Vá em <strong>Meus Apps → Criar App</strong></li>
+        <li>Escolha o tipo <strong>"Negócios"</strong> e siga as instruções de criação</li>
+      </ol>
+
+      <h3>Passo 2 — Gerar o Token de Acesso</h3>
+      <ol class="docs-steps">
+        <li>Acesse o <a href="https://developers.facebook.com/tools/explorer" target="_blank">Graph API Explorer</a></li>
+        <li>Selecione o App que você criou no menu superior</li>
+        <li>Em <strong>Permissões</strong>, marque: <code>ads_read</code>, <code>ads_management</code> e <code>business_management</code></li>
+        <li>Clique em <strong>"Gerar Token de Acesso"</strong> e copie o token gerado</li>
+      </ol>
+      <div class="docs-callout docs-callout-info">
+        <strong>💡 Token de longa duração</strong>
+        <p>O token gerado pelo Graph API Explorer expira em poucas horas. Para uso contínuo, pesquise como gerar um <strong>"System User Token"</strong> nas configurações do seu Business Manager — esse token não expira.</p>
+      </div>
+
+      <h3>Passo 3 — Encontrar o ID da Conta de Anúncios</h3>
+      <ol class="docs-steps">
+        <li>Acesse o <a href="https://business.facebook.com/adsmanager" target="_blank">Gerenciador de Anúncios</a></li>
+        <li>O ID aparece na URL ou nas configurações da conta, no formato <code>act_123456789</code></li>
+        <li>Cole esse ID exatamente como aparece (com o <code>act_</code> na frente) — o sistema corrige automaticamente caso você cole só os números</li>
+      </ol>
+
+      <h3>Passo 4 — Registrar o domínio (obrigatório)</h3>
+      <ol class="docs-steps">
+        <li>No painel do seu App, vá em <strong>Configurações → Básico</strong></li>
+        <li>No campo <strong>"URL do site"</strong>, cole exatamente a URL onde você hospedou o TheusMarkt (ex: <code>https://seusite.netlify.app</code>)</li>
+      </ol>
+      <div class="docs-callout docs-callout-warn">
+        <strong>⚠️ Sem isso, a sincronização falha</strong>
+        <p>Se o domínio não estiver registrado no App, todas as chamadas à API do Meta retornam erro de CORS ou o erro #100. Esse é o problema mais comum na configuração inicial.</p>
+      </div>
+
+      <h3>Diagnóstico rápido</h3>
+      <p>Dentro do sistema, em <strong>Contas &amp; Tokens</strong>, existe um campo de diagnóstico que testa seu token antes de salvar e lista automaticamente as contas de anúncios disponíveis para aquele token.</p>
+    </section>
+
+    <!-- ══════════════ GOOGLE ADS ══════════════ -->
+    <section id="google" class="docs-section">
+      <div class="docs-plat-header">
+        <span class="docs-plat-icon google-bg">🔴</span>
+        <h2>Google Ads</h2>
+      </div>
+      <p>A integração usa a Google Ads API v17. Você vai precisar de um <strong>Access Token (OAuth2)</strong>, um <strong>Developer Token</strong> e do <strong>Customer ID</strong>.</p>
+
+      <h3>Passo 1 — Criar um projeto no Google Cloud</h3>
+      <ol class="docs-steps">
+        <li>Acesse o <a href="https://console.cloud.google.com" target="_blank">Google Cloud Console</a></li>
+        <li>Crie um novo projeto (ou use um existente)</li>
+        <li>No menu, vá em <strong>APIs e Serviços → Biblioteca</strong> e ative a <strong>"Google Ads API"</strong></li>
+      </ol>
+
+      <h3>Passo 2 — Gerar credenciais OAuth2</h3>
+      <ol class="docs-steps">
+        <li>Em <strong>APIs e Serviços → Credenciais</strong>, clique em <strong>Criar Credenciais → ID do cliente OAuth</strong></li>
+        <li>Tipo de aplicativo: <strong>"Aplicativo da Web"</strong></li>
+        <li>Em URIs de redirecionamento autorizados, adicione a URL do seu sistema</li>
+        <li>Use o fluxo OAuth2 do Google para gerar um <strong>Access Token</strong> (existem ferramentas online de "OAuth Playground" do próprio Google que facilitam isso)</li>
+      </ol>
+
+      <h3>Passo 3 — Obter o Developer Token</h3>
+      <ol class="docs-steps">
+        <li>Acesse <a href="https://ads.google.com" target="_blank">ads.google.com</a> com a conta que administra o Google Ads</li>
+        <li>Vá em <strong>Ferramentas e Configurações → Configuração → Central da API</strong></li>
+        <li>Copie o <strong>Developer Token</strong> gerado para sua conta</li>
+      </ol>
+      <div class="docs-callout docs-callout-warn">
+        <strong>⚠️ Developer Token é obrigatório</strong>
+        <p>Sem o Developer Token preenchido no campo específico (visível ao escolher Google Ads ao adicionar uma conta), a sincronização não funciona — o sistema mostra um aviso claro indicando o que falta.</p>
+      </div>
+
+      <h3>Passo 4 — Encontrar o Customer ID</h3>
+      <ol class="docs-steps">
+        <li>No painel do Google Ads, o Customer ID aparece no canto superior direito, no formato <code>123-456-7890</code></li>
+        <li>Cole apenas os números, sem hífens: <code>1234567890</code></li>
+      </ol>
+    </section>
+
+    <!-- ══════════════ TIKTOK ADS ══════════════ -->
+    <section id="tiktok" class="docs-section">
+      <div class="docs-plat-header">
+        <span class="docs-plat-icon tiktok-bg">🎵</span>
+        <h2>TikTok Ads</h2>
+      </div>
+      <p>A integração usa a TikTok Marketing API v1.3. Você vai precisar de um <strong>Access Token</strong> e do <strong>Advertiser ID</strong>.</p>
+
+      <h3>Passo 1 — Criar um App na TikTok for Business</h3>
+      <ol class="docs-steps">
+        <li>Acesse <a href="https://ads.tiktok.com/marketing_api" target="_blank">ads.tiktok.com/marketing_api</a></li>
+        <li>Vá em <strong>Meus Apps → Criar App</strong></li>
+        <li>Solicite as permissões: <code>Campaign Read</code>, <code>Report Read</code> e <code>Ad Read</code></li>
+      </ol>
+
+      <h3>Passo 2 — Gerar o Access Token</h3>
+      <ol class="docs-steps">
+        <li>Após a aprovação do App (pode levar alguns dias para apps novos), siga o fluxo de autorização indicado pela própria TikTok for Business</li>
+        <li>Copie o <strong>Access Token</strong> gerado para a conta de anúncios que você quer conectar</li>
+      </ol>
+      <div class="docs-callout docs-callout-info">
+        <strong>💡 Ambiente de testes</strong>
+        <p>Enquanto seu App não é aprovado para produção, a TikTok oferece um ambiente <strong>Sandbox</strong> para testar a integração com dados fictícios.</p>
+      </div>
+
+      <h3>Passo 3 — Encontrar o Advertiser ID</h3>
+      <ol class="docs-steps">
+        <li>No TikTok Ads Manager, vá em <strong>Conta → Configurações</strong></li>
+        <li>O <strong>Advertiser ID</strong> aparece nessa tela — copie o número exatamente como mostrado</li>
+      </ol>
+    </section>
+
+    <!-- ══════════════ LINKEDIN ADS ══════════════ -->
+    <section id="linkedin" class="docs-section">
+      <div class="docs-plat-header">
+        <span class="docs-plat-icon li-bg">🔵</span>
+        <h2>LinkedIn Ads</h2>
+      </div>
+      <p>A integração com o LinkedIn usa OAuth2 e a Campaign Management API.</p>
+
+      <h3>Passo 1 — Criar um App no LinkedIn Developers</h3>
+      <ol class="docs-steps">
+        <li>Acesse <a href="https://www.linkedin.com/developers" target="_blank">linkedin.com/developers</a></li>
+        <li>Crie um novo App vinculado à sua Página do LinkedIn</li>
+        <li>Solicite acesso ao produto <strong>"Marketing Developer Platform"</strong></li>
+      </ol>
+
+      <h3>Passo 2 — Gerar o Access Token</h3>
+      <ol class="docs-steps">
+        <li>Configure o fluxo OAuth2 do App com a permissão <code>r_ads</code> (leitura de dados de anúncios)</li>
+        <li>Gere o Access Token seguindo o fluxo de autorização do LinkedIn</li>
+      </ol>
+      <div class="docs-callout docs-callout-warn">
+        <strong>⚠️ Validade do token</strong>
+        <p>Tokens do LinkedIn costumam expirar em até 60 dias. Você precisará gerar um novo periodicamente e atualizar no sistema (use o botão "✎ Editar" na conta, em Contas &amp; Tokens).</p>
+      </div>
+
+      <h3>Passo 3 — Encontrar o ID da Conta</h3>
+      <ol class="docs-steps">
+        <li>No <strong>Campaign Manager</strong> do LinkedIn, o ID da conta de anúncios aparece nas configurações da conta</li>
+      </ol>
+    </section>
+
+    <!-- ══════════════ IA ══════════════ -->
+    <section id="ia" class="docs-section">
+      <div class="docs-plat-header">
+        <span class="docs-plat-icon" style="background:rgba(167,139,250,.15)">🤖</span>
+        <h2>Inteligência Artificial (Anthropic)</h2>
+      </div>
+      <p>A análise estratégica do sistema usa a API da Anthropic (modelo Claude).</p>
+      <ol class="docs-steps">
+        <li>Crie uma conta em <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a></li>
+        <li>Gere uma <strong>API Key</strong> na seção de chaves de API</li>
+        <li>Dentro do TheusMarkt, vá em <strong>Contas &amp; Tokens → Configurações de IA</strong> e cole a chave</li>
+      </ol>
+      <div class="docs-callout docs-callout-info">
+        <strong>💡 Custo de uso</strong>
+        <p>A Anthropic cobra por uso da API (conforme volume de texto processado). Os valores são geralmente baixos para o uso de análise pontual de campanhas — consulte a tabela de preços atualizada no site da Anthropic.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════ PROBLEMAS COMUNS ══════════════ -->
+    <section id="problemas" class="docs-section">
+      <h2>Problemas comuns</h2>
+
+      <div class="docs-faq-item">
+        <h4>Erro #100 ao sincronizar Meta Ads</h4>
+        <p>Geralmente significa que o domínio não está registrado no App do Facebook, ou que o token não tem as 3 permissões necessárias (<code>ads_read</code>, <code>ads_management</code>, <code>business_management</code>).</p>
+      </div>
+      <div class="docs-faq-item">
+        <h4>Google Ads não sincroniza</h4>
+        <p>Confirme se o Developer Token foi preenchido corretamente ao editar a conta, e se a Google Ads API está ativada no projeto do Google Cloud.</p>
+      </div>
+      <div class="docs-faq-item">
+        <h4>O sistema mostra "Nenhuma campanha encontrada"</h4>
+        <p>Verifique se a conta de anúncios realmente tem campanhas ativas no período de data selecionado no filtro.</p>
+      </div>
+      <div class="docs-faq-item">
+        <h4>Esqueci a senha de acesso ao sistema</h4>
+        <p>A senha está definida no arquivo <code>app.js</code>, na constante <code>PASSWORD</code>. Edite o arquivo diretamente para trocar.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="sales.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+/* ============================================
+   THEUSMARKT — DOCS PAGE CSS
+   ============================================ */
+.docs-body{padding-top:0;}
+.active-link{color:var(--gold)!important;}
+
+.docs-layout{display:grid;grid-template-columns:260px 1fr;max-width:1280px;margin:0 auto;padding:90px 28px 60px;gap:0;}
+
+/* SIDEBAR */
+.docs-sidebar{border-right:1px solid var(--border);padding-right:30px;}
+.docs-sidebar-inner{position:sticky;top:100px;}
+.docs-sidebar-label{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.docs-nav{display:flex;flex-direction:column;gap:2px;}
+.docs-nav-link{font-size:13.5px;font-weight:600;color:var(--text2);padding:9px 12px;border-radius:8px;transition:.15s;}
+.docs-nav-link:hover{background:rgba(255,255,255,.04);color:var(--text);}
+.docs-nav-group{font-size:10.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin:18px 0 6px;padding:0 12px;}
+
+/* CONTENT */
+.docs-content{padding-left:48px;max-width:760px;}
+.docs-section{margin-bottom:64px;scroll-margin-top:90px;}
+.docs-section h1{font-size:34px;font-weight:900;margin-bottom:18px;}
+.docs-section h2{font-size:24px;font-weight:800;margin-bottom:16px;padding-top:8px;}
+.docs-section h3{font-size:16px;font-weight:800;margin:26px 0 10px;}
+.docs-section h4{font-size:14.5px;font-weight:800;margin-bottom:6px;}
+.docs-section p{font-size:14.5px;font-weight:500;color:var(--text2);line-height:1.75;margin-bottom:12px;}
+.docs-lead{font-size:16px!important;color:var(--text2);margin-bottom:24px!important;}
+.docs-section a{color:var(--gold);font-weight:600;text-decoration:underline;}
+.docs-section code{background:var(--bg3);border:1px solid var(--border);padding:2px 7px;border-radius:5px;font-size:13px;font-family:'Courier New',monospace;color:#34d399;}
+
+.docs-list{display:flex;flex-direction:column;gap:10px;margin:14px 0;padding-left:4px;}
+.docs-list li{font-size:14.5px;font-weight:500;color:var(--text2);line-height:1.6;padding-left:20px;position:relative;}
+.docs-list li::before{content:'•';position:absolute;left:0;color:var(--gold);font-weight:800;}
+
+.docs-steps{display:flex;flex-direction:column;gap:12px;margin:14px 0 18px;counter-reset:step;}
+.docs-steps li{font-size:14.5px;font-weight:500;color:var(--text2);line-height:1.65;padding-left:38px;position:relative;counter-increment:step;}
+.docs-steps li::before{content:counter(step);position:absolute;left:0;top:-1px;width:24px;height:24px;border-radius:50%;background:linear-gradient(120deg,var(--gold),var(--gold2));color:#000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.docs-steps strong{color:var(--text);font-weight:700;}
+
+.docs-callout{border-radius:14px;padding:18px 22px;margin:20px 0;}
+.docs-callout strong{display:block;font-size:14px;font-weight:800;margin-bottom:6px;}
+.docs-callout p{font-size:13.5px;margin-bottom:0;}
+.docs-callout-info{background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.25);}
+.docs-callout-info strong{color:var(--blue);}
+.docs-callout-warn{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.25);}
+.docs-callout-warn strong{color:var(--red);}
+
+.docs-plat-header{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.docs-plat-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.docs-plat-header h2{margin-bottom:0;padding-top:0;}
+
+.docs-faq-item{padding:18px 0;border-bottom:1px solid var(--border);}
+.docs-faq-item:last-child{border-bottom:none;}
+
+@media(max-width:900px){
+  .docs-layout{grid-template-columns:1fr;}
+  .docs-sidebar{display:none;}
+  .docs-content{padding-left:0;}
+}

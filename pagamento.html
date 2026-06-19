@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finalizar compra — TheusMarkt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sales.css">
+  <link rel="stylesheet" href="payment.css">
+</head>
+<body class="payment-body">
+
+<a href="index.html" class="payment-back">← Voltar ao site</a>
+
+<div class="payment-screen">
+  <div class="payment-bg">
+    <div class="orb orb1"></div><div class="orb orb2"></div>
+  </div>
+
+  <div class="payment-container">
+
+    <!-- ════════ STEP 1: DADOS DO COMPRADOR ════════ -->
+    <div class="payment-step" id="stepForm">
+      <div class="payment-card">
+        <div class="payment-brand">
+          <img src="Logo_TheusMarkt.png" alt="TheusMarkt" class="payment-logo">
+        </div>
+
+        <div class="order-summary">
+          <div class="order-summary-row">
+            <span>TheusMarkt — Licença de Uso</span>
+            <span class="order-price">R$ 99,99</span>
+          </div>
+          <div class="order-summary-sub">Pagamento único via PIX · Acesso liberado automaticamente</div>
+        </div>
+
+        <h1 class="payment-title">Seus dados</h1>
+        <p class="payment-sub">Usaremos para liberar o acesso e enviar o link de download.</p>
+
+        <form id="buyerForm" class="payment-form">
+          <div class="form-row">
+            <label>Nome completo</label>
+            <input type="text" id="buyerName" placeholder="Seu nome" required autocomplete="name">
+          </div>
+          <div class="form-row">
+            <label>E-mail</label>
+            <input type="email" id="buyerEmail" placeholder="voce@email.com" required autocomplete="email">
+          </div>
+          <div class="form-row">
+            <label>WhatsApp <span class="optional">(opcional)</span></label>
+            <input type="tel" id="buyerPhone" placeholder="(00) 00000-0000" autocomplete="tel">
+          </div>
+          <span class="form-err" id="buyerErr"></span>
+          <button type="submit" class="btn-pay" id="btnGeneratePix">Gerar PIX e pagar →</button>
+        </form>
+
+        <div class="payment-trust">
+          <span>🔒 Pagamento processado pelo Mercado Pago</span>
+          <span>⚡ Liberação automática após confirmação</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════ STEP 2: QR CODE / PIX ════════ -->
+    <div class="payment-step hidden" id="stepPix">
+      <div class="payment-card">
+        <div class="payment-brand">
+          <img src="Logo_TheusMarkt.png" alt="TheusMarkt" class="payment-logo">
+        </div>
+
+        <h1 class="payment-title">Pague com PIX</h1>
+        <p class="payment-sub">Escaneie o QR Code ou copie o código abaixo no app do seu banco.</p>
+
+        <div class="pix-qr-wrap">
+          <img id="pixQrImage" src="" alt="QR Code PIX" class="pix-qr-img">
+        </div>
+
+        <div class="pix-amount">R$ 99,99</div>
+
+        <div class="pix-copy-wrap">
+          <input type="text" id="pixCopyCode" readonly>
+          <button class="btn-copy" id="btnCopyPix" onclick="copyPixCode()">Copiar</button>
+        </div>
+
+        <div class="pix-status" id="pixStatus">
+          <div class="pix-status-spinner"></div>
+          <span>Aguardando pagamento...</span>
+        </div>
+
+        <div class="pix-order-id">Pedido: <code id="pixOrderId">—</code></div>
+
+        <p class="pix-note">Esta página verifica automaticamente quando o pagamento for confirmado. Não é necessário recarregar — o link de download aparecerá aqui mesmo.</p>
+      </div>
+    </div>
+
+    <!-- ════════ STEP 3: SUCESSO / DOWNLOAD ════════ -->
+    <div class="payment-step hidden" id="stepSuccess">
+      <div class="payment-card payment-card-success">
+        <div class="success-icon">✅</div>
+        <h1 class="payment-title">Pagamento confirmado!</h1>
+        <p class="payment-sub">Seu acesso ao TheusMarkt foi liberado. Clique no botão abaixo para baixar o sistema completo.</p>
+
+        <a href="#" id="downloadLink" class="btn-download">⬇ Baixar TheusMarkt</a>
+
+        <div class="success-next">
+          <strong>Próximo passo:</strong>
+          <p>Acesse nossa <a href="documentacao.html">página de Documentação</a> para o passo a passo de configuração de cada plataforma de anúncios.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="payment-config.js"></script>
+<script src="payment.js"></script>
+</body>
+</html>
